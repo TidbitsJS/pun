@@ -1,0 +1,16 @@
+{
+  "name": "pun",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Main package of pun pro courses",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gray-matter": "^4.0.3"
+  }
+}
