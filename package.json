@@ -1,7 +1,7 @@
 {
   "name": "punn",
   "type": "module",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Main package of pun pro courses",
   "main": "index.js",
   "scripts": {
