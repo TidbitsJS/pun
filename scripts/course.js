@@ -3,8 +3,9 @@ import fs from 'fs/promises'
 import matter from 'gray-matter'
 
 import { getContentPath } from './content.js';
+import { allCourses } from '../packages/index.js';
 
-export async function getAllCourses(packageNames) {
+export async function getAllCourses(packageNames = allCourses) {
     const allCourseInfo = [];
 
     async function processCourse(packageName) {

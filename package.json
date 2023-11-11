@@ -1,7 +1,7 @@
 {
   "name": "punn",
   "type": "module",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Main package of pun pro courses",
   "main": "index.js",
   "scripts": {
@@ -12,8 +12,9 @@
   "license": "ISC",
   "dependencies": {
     "gray-matter": "^4.0.3",
-    "next-pro": "^1.0.0",
-    "nodemon": "^3.0.1"
+    "next-pro": "^2.0.0",
+    "nodemon": "^3.0.1",
+    "reactt-pro": "^1.0.0"
   },
   "repository": {
     "type": "git",

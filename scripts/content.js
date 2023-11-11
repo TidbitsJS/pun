@@ -21,23 +21,22 @@ export async function getContentPath(packageName) {
     }
 }
 
-export async function getContentBySlug(contentPath, sectionSlug, lectureSlug) {
-    const sectionPath = path.join(contentPath, sectionSlug);
-    const lectureFileName = `${lectureSlug}.mdx`;
-    const lecturePath = path.join(sectionPath, lectureFileName);
+export async function getLectureContent(packageName, moduleName, lectureName) {
+    const contentPath = await getContentPath(packageName);
 
-    try {
-        const lectureContent = await fs.readFile(lecturePath, 'utf8');
-        const lectureData = matter(lectureContent);
-        return {
-            slug: lectureSlug,
-            meta: lectureData.data,
-            content: lectureData.content,
-        };
-    } catch (error) {
-        console.error(`Error reading lecture file for ${sectionSlug}/${lectureFileName}: ${error}`);
-        return null;
+    if (contentPath) {
+        const modulePath = path.join(contentPath, moduleName);
+        const lecturePath = path.join(modulePath, `${lectureName}.mdx`);
+
+        try {
+            const lectureContent = await fs.readFile(lecturePath, 'utf8');
+            return lectureContent;
+        } catch (error) {
+            console.error(`Error reading lecture content for ${packageName}/${moduleName}/${lectureName}: ${error}`);
+        }
     }
+
+    return null; // Return null if the lecture content is not found
 }
 
 export async function generateCurriculumStructure(packageName) {
