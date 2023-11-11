@@ -30,7 +30,16 @@ export async function getLectureContent(packageName, moduleName, lectureName) {
 
         try {
             const lectureContent = await fs.readFile(lecturePath, 'utf8');
-            return lectureContent;
+            const lectureData = matter(lectureContent);
+
+            const formattedLectureInfo = {
+                title: lectureData.data.title || '',
+                abstract: lectureData.data.abstract || '',
+                slug: lectureName,
+                content: lectureData.content || '',
+            };
+
+            return formattedLectureInfo;
         } catch (error) {
             console.error(`Error reading lecture content for ${packageName}/${moduleName}/${lectureName}: ${error}`);
         }
