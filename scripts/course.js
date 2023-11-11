@@ -11,7 +11,7 @@ export async function getAllCourses(packageNames) {
         const contentPath = await getContentPath(packageName);
 
         if (contentPath) {
-            const readmePath = path.join(contentPath, 'README.md');
+            const readmePath = path.join(contentPath, 'README.mdx');
 
             try {
                 const readmeContent = await fs.readFile(readmePath, 'utf8');
@@ -44,7 +44,7 @@ export async function getSingleCourse(packageName) {
     const contentPath = await getContentPath(packageName);
 
     if (contentPath) {
-        const readmePath = path.join(contentPath, 'README.md');
+        const readmePath = path.join(contentPath, 'README.mdx');
 
         try {
             const readmeContent = await fs.readFile(readmePath, 'utf8');

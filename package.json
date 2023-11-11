@@ -11,7 +11,9 @@
   "author": "Tidbits JS",
   "license": "ISC",
   "dependencies": {
-    "gray-matter": "^4.0.3"
+    "gray-matter": "^4.0.3",
+    "next-pro": "^1.0.0",
+    "nodemon": "^3.0.1"
   },
   "repository": {
     "type": "git",
