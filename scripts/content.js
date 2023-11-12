@@ -3,6 +3,8 @@ import fs from 'fs/promises';
 import matter from 'gray-matter';
 
 export async function getContentPath(packageName) {
+    console.log("getContentPath", packageName)
+
     // Get the path to the node_modules directory
     const nodeModulesPath = path.resolve('node_modules');
 
