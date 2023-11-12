@@ -36,7 +36,7 @@ export async function getContentPath(packageName) {
 
         try {
             // Check if the package directory exists by attempting to access it
-            await fs.access(packagePath);
+            // await fs.access(packagePath);
 
             // If the access is successful, construct and return the content path
             const contentPath = path.join(packagePath, 'content');
