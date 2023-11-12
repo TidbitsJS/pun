@@ -2,23 +2,50 @@ import path from 'path';
 import fs from 'fs/promises';
 import matter from 'gray-matter';
 
+// export async function getContentPath(packageName) {
+//     console.log("getContentPath", packageName)
+
+//     // Get the path to the node_modules directory
+//     const nodeModulesPath = path.resolve('node_modules');
+
+//     // Check for the package directory
+//     const packagePath = path.join(nodeModulesPath, packageName);
+//     try {
+//         const stat = await fs.stat(packagePath);
+//         if (stat.isDirectory()) {
+//             // Package directory found, construct and return the content path
+//             const contentPath = path.join(packagePath, 'content');
+//             return contentPath;
+//         }
+//     } catch (error) {
+//         console.error(`Package ${packageName} not found in node_modules: ${error}`);
+//         return null;
+//     }
+// }
+
 export async function getContentPath(packageName) {
     console.log("getContentPath", packageName)
 
-    // Get the path to the node_modules directory
-    const nodeModulesPath = path.resolve('node_modules');
-
-    // Check for the package directory
-    const packagePath = path.join(nodeModulesPath, packageName);
     try {
-        const stat = await fs.stat(packagePath);
-        if (stat.isDirectory()) {
-            // Package directory found, construct and return the content path
+        // Get the current working directory
+        const currentWorkingDirectory = process.cwd();
+
+        // Construct the package path based on the current working directory
+        const packagePath = path.join(currentWorkingDirectory, 'node_modules', packageName);
+
+        try {
+            // Check if the package directory exists by attempting to access it
+            await fs.access(packagePath);
+
+            // If the access is successful, construct and return the content path
             const contentPath = path.join(packagePath, 'content');
             return contentPath;
+        } catch (error) {
+            console.error(`Package ${packageName} not found in node_modules.`);
+            return null;
         }
     } catch (error) {
-        console.error(`Package ${packageName} not found in node_modules: ${error}`);
+        console.error(`Error while determining the package path: ${error}`);
         return null;
     }
 }
