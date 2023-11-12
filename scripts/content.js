@@ -24,7 +24,7 @@ import matter from 'gray-matter';
 // }
 
 export async function getContentPath(packageName) {
-    console.log("getContentPath", packageName)
+    console.log("packageName", packageName)
 
     try {
         // Get the current working directory
@@ -32,6 +32,7 @@ export async function getContentPath(packageName) {
 
         // Construct the package path based on the current working directory
         const packagePath = path.join(currentWorkingDirectory, 'node_modules', packageName);
+        console.log("packagePath", packagePath)
 
         try {
             // Check if the package directory exists by attempting to access it
@@ -39,6 +40,8 @@ export async function getContentPath(packageName) {
 
             // If the access is successful, construct and return the content path
             const contentPath = path.join(packagePath, 'content');
+            console.log("contentPath", contentPath)
+
             return contentPath;
         } catch (error) {
             console.error(`Package ${packageName} not found in node_modules.`);
